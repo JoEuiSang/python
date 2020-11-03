@@ -22,3 +22,6 @@ elif day == 5:
 
 elif day == 6:
     print("토요일")
+
+else:
+    print("잘못입력함")
