@@ -18,11 +18,15 @@ for i in range(len(score)):
     if (score[i] > avg):
         print(score[i])
 
-#최고점수
+# 최고점수
 max = 0
+min = 99999
 
 for i in range(len(score)):
-    if(score[i] >max):
-        max=score[i]
+    if score[i] > max:
+        max = score[i]
+    if score[i] < min:
+        min = score[i]
 
 print("최고점수 : ", max)
+print("최소점수 : ", min)
