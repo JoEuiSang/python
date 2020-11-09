@@ -16,6 +16,10 @@
 list1 = []
 
 
+# def dup_check(num):
+#     if num in list1:
+#         return True
+
 def add_list():
     num = int(input('추가할 값 입력 : '))
     if num in list1:
@@ -116,7 +120,7 @@ def delete_addr():
 
 
 def select_all_addr():
-    if len(addr)==0:
+    if len(addr) == 0:
         print('등록된 정보가 없습니다')
         return
 
@@ -134,23 +138,32 @@ while True:
 
     if (menu == 1):
         print('1번과제 리스트')
+        f = [add_list,
+             search_list,
+             update_list,
+             delete_list,
+             select_all_list,
+             delete_all_list]
 
         while True:
             sel = int(input('1.추가\n2.검색\n3.수정\n4.삭제\n5.전체출력\n6.전체삭제\n0.종료'))
+
+            # 룩업테이블로하면 직관적이지 않은 느낌
             if sel == 1:
-                add_list()
+                f[0]()
             elif sel == 2:
-                search_list()
+                f[1]()
             elif sel == 3:
-                update_list()
+                f[2]()
             elif sel == 4:
-                delete_list()
+                f[3]()
             elif sel == 5:
-                select_all_list()
+                f[4]()
             elif sel == 6:
-                delete_all_list()
+                f[5]()
             elif sel == 0:
                 break
+            print()
 
     elif (menu == 2):
         print('2번과제 함수')
@@ -171,6 +184,7 @@ while True:
                 delete_all_addr()
             elif sel == 0:
                 break
+            print()
 
     elif (menu == 0):
         break
