@@ -10,6 +10,13 @@ import os
 
 workDir = './Memo'
 
+
+def exPath():
+    if os.path.isdir(workDir) == False:
+        os.mkdir(workDir)
+        print(f'{workDir} 경로가 생성되었습니다')
+
+
 def remove():
     list = os.listdir(workDir)
     for (idx, i) in enumerate(list):
@@ -21,18 +28,35 @@ def remove():
     print(path, '를 삭제합니다')
     os.remove(path)
 
+
 def rmdir():
     yn = input('폴더를 삭제할까요?')
+
     if yn == 'y':
+        list = os.listdir(workDir)
+        for i in list:
+            path = workDir + '/' + i
+            os.remove(path)
         os.rmdir(workDir)
         print('폴더가 삭제되었습니다')
 
+
 def read():
+    exPath()
+
     list = os.listdir(workDir)
-    for (idx, i) in enumerate(list):
-        print(f'{idx}번 파일:{i}')
+    if len(list) > 0:
+        for (idx, i) in enumerate(list):
+            print(f'{idx}번 파일:{i}')
+    else:
+        print('파일이 존재하지 않습니다')
+        return
 
     idx = int(input('읽을 파일을 선택하세요'))
+
+    if len(list) <= idx:
+        print('선택한 번호는 존재하지 않습니다')
+        return
 
     path = workDir + '/' + list[idx]
     print(path)
@@ -40,6 +64,7 @@ def read():
     f.seek(0, 0)
     content = f.read()
     print(content)
+
 
 def write():
     f_name = input('파일명 입력')
@@ -77,8 +102,7 @@ def write():
 
 
 def main():
-    if (os.path.isdir(workDir) == False):
-        os.mkdir(workDir)
+    exPath() #경로 존재 여부 파악 후 없으면 생성
 
     while True:
         sel = int(input('1.읽기 2.쓰기 3.삭제 4.clear 5.종료'))
@@ -93,6 +117,5 @@ def main():
             rmdir()
         elif sel == 5:
             break
-
 
 main()
