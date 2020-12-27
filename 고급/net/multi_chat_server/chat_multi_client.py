@@ -1,8 +1,9 @@
 import socket, threading
 
+
 class ChatClient:
     ip = 'localhost'  # or 본인 ip or 127.0.0.1
-    port = 5555
+    port = 6666
 
     def __init__(self):
         self.client_soc = None
@@ -36,8 +37,10 @@ class ChatClient:
         th2 = threading.Thread(target=self.recvMsg)
         th2.start()
 
+
 def main():
     c = ChatClient()
     c.run()
+
 
 main()

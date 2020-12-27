@@ -23,6 +23,7 @@ class ChatClient:  # 텔레마케터
         self.soc = soc  # 사용자와 1:1 통신할 소켓
 
     def readMsg(self):
+
         self.id = self.soc.recv(1024).decode()
         self.room.sendMsgAll(self.id + '님이 입장하셨습니다')
 
@@ -41,7 +42,7 @@ class ChatClient:  # 텔레마케터
 
 class ChatServer:
     ip = 'localhost'  # or 본인 ip or 127.0.0.1
-    port = 5555
+    port = 6666
 
     def __init__(self):
         self.server_soc = None  # 서버 소켓(대문)

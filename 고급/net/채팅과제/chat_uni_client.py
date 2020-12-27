@@ -3,7 +3,7 @@ import threading, socket
 
 class UniClient:
     # class 변수 / static 변수 : 모든 객체가 공유
-    ip = '192.168.35.99'
+    ip = 'localhost'
     port = 5555
 
     def __init__(self):
